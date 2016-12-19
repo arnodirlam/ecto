@@ -252,7 +252,7 @@ defmodule Ecto.Schema do
   defined so structs and changeset functionalities are available.
   """
 
-  @type t :: %{__struct__: atom}
+  @type t :: struct
 
   defmodule Metadata do
     @moduledoc """
@@ -802,16 +802,16 @@ defmodule Ecto.Schema do
   define the relationships between the resources. In this case,
   the comments table won't have the foreign key, instead there
   is a intermediary table responsible for associating the entries:
-  
+
       defmodule Comment do
         use Ecto.Schema
         schema "comments" do
           # ...
         end
       end
-  
+
   In your posts and tasks:
-  
+
       defmodule Post do
         use Ecto.Schema
 
@@ -954,7 +954,7 @@ defmodule Ecto.Schema do
   ## Join Schema Example
 
   You may prefer to use a join schema to handle many_to_many associations. The
-  decoupled nature of Ecto allows us to create a "join" struct which 
+  decoupled nature of Ecto allows us to create a "join" struct which
   `belongs_to` both sides of the many to many association.
 
   In our example, a User has and belongs to many Organizations
